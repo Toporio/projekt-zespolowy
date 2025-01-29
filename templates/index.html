@@ -1,32 +1,123 @@
-{% args led_value %}
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>MicroPython Webserver</title>
-    <link rel="stylesheet" href="static/css/entireframework.min.css" />
-    <link rel="stylesheet" href="static/css/index.css" />
-    <script src="static/js/index.js"></script>
-  </head>
-  <body>
-    <nav class="nav" tabindex="-1" onclick="this.focus()">
-      <div class="container">
-        <a class="pagename current" href="#">www.donskytech.com</a>
-        <a href="#">One</a>
-        <a href="#">Two</a>
-        <a href="#">Three</a>
-      </div>
-    </nav>
-    <button class="btn-close btn btn-sm">×</button>
-    <div class="container">
-      <div class="hero">
-        <h1 class="title">MicroPython Webserver</h1>
-        <div class="toggle-div">
-            <p class="label">Toggle Switch</p>
-            <input type="checkbox" id="switch" onclick="toggleButtonSwitch()" {% if led_value == 1 %} checked {% endif %}/><label for="switch">Toggle</label>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Express Your Needs</title>
+    <style>
+        /* General Page Styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #f7f3e7;
+        }
+
+        h1 {
+            margin: 20px 0 10px 0;
+            font-size: 24px;
+            color: #333;
+        }
+
+        p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            color: #666;
+            text-align: center;
+        }
+
+        /* Button Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            width: 90%;
+            max-width: 400px;
+        }
+
+        .grid-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100px;
+            border: 2px solid #ccc;
+            background-color: white;
+            color: #333;
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-radius: 8px;
+        }
+
+        .grid-item:hover {
+            background-color: #c5d9a8;
+            border-color: #8ab760;
+            color: white;
+        }
+
+        .selected {
+            background-color: #c5d9a8;
+            border-color: #8ab760;
+            color: white;
+        }
+
+        /* Footer Styling */
+        .footer {
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: space-around;
+            padding: 10px 0;
+            background-color: #f7f3e7;
+        }
+
+        .footer-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: white;
+            border-radius: 50%;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+        }
+
+        .footer-icon:hover {
+            background-color: #c5d9a8;
+        }
+    </style>
+</head>
+<body>
+    <h1>Express Your Needs</h1>
+    <p>Click the corresponding button to let the lecturer know about your needs</p>
+
+    <form method="POST" action="/submit">
+        <div class="grid-container">
+            <button class="grid-item" name="selected_item" value="Item 1" type="submit">Item 1</button>
+            <button class="grid-item" name="selected_item" value="Item 2" type="submit">Item 2</button>
+            <button class="grid-item" name="selected_item" value="Item 3" type="submit">Item 3</button>
+            <button class="grid-item" name="selected_item" value="Item 4" type="submit">Item 4</button>
+            <button class="grid-item selected" name="selected_item" value="Item 5" type="submit">Item 5</button>
+            <button class="grid-item" name="selected_item" value="Item 6" type="submit">Item 6</button>
+            <button class="grid-item" name="selected_item" value="Item 7" type="submit">Item 7</button>
+            <button class="grid-item" name="selected_item" value="Item 8" type="submit">Item 8</button>
+            <button class="grid-item" name="selected_item" value="Item 9" type="submit">Item 9</button>
         </div>
-      </div>
+    </form>
+
+    <div class="footer">
+        <div class="footer-icon">🌼</div>
+        <div class="footer-icon">📜</div>
     </div>
-  </body>
+</body>
 </html>
+

@@ -1,21 +1,14 @@
 # boot.py -- run on boot-up
 import network, utime
 
-# Replace the following with your WIFI Credentials
-SSID = "<PLACE_YOUR_SSID_HERE>"
-SSI_PASSWORD = "<PLACE_YOUR_WIFI_PASWORD_HERE>"
 
-def do_connect():
-    import network
-    sta_if = network.WLAN(network.STA_IF)
-    if not sta_if.isconnected():
-        print('connecting to network...')
-        sta_if.active(True)
-        sta_if.connect(SSID, SSI_PASSWORD)
-        while not sta_if.isconnected():
-            pass
-    print('Connected! Network config:', sta_if.ifconfig())
-    
-print("Connecting to your wifi...")
-do_connect()
+# Replace the following with your WIFI Credentials
+
+ap = network.WLAN(network.WLAN.IF_AP) # create access-point interface
+ap.config(ssid='IHGS') # set the SSID of the access point
+ap.config(max_clients=10) # set how many clients can connect to the network
+ap.active(True)         # activate the interface
+while not ap.active():
+    pass
+print('network config: ', ap.ifconfig())
 
